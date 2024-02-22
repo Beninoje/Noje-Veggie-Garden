@@ -1,0 +1,50 @@
+﻿@model IEnumerable<VeggiTales.Models.FavouriteItem>
+
+@{
+    ViewData["Title"] = "Favourites";
+    
+}
+
+<h1>View</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.Name)
+                    <div>
+                        @if (item.Product.Photo != null)
+                        {
+                            <img src="~/img/product-uploads/@item.Product.Photo" alt="@item.Product.Name Photo" class="thumb" />
+                        }
+                        else
+                        {
+                            <img src="~/img/product-uploads/placeholder.jpg" alt="@item.Product.Name Photo" class="thumb" />
+                        }
+                    </div>
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.ProductId)
+            </td>
+            <td>
+                <a asp-action="RemoveFromFavourites" asp-route-id="@item.FavouriteItemId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

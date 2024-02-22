@@ -1,0 +1,213 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - VeggiTales</title>
+    @*     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /> *@
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <!-- main stylesheet -->
+    <link rel="stylesheet" href="~/VeggiTales.styles.css" asp-append-version="true" />
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- swiper -->
+    <link rel="stylesheet" href="~/css/cdn.jsdelivr.net_npm_swiper@10.1.0_swiper-bundle.min.css">
+    <link rel="stylesheet" href="~/css/swiper-bundle.min.css">
+</head>
+<body>
+    <header>
+        <nav class="nav">
+            <div class="logo">
+                <button class="open-nav"><i class="fa-solid fa-bars"></i></button>
+                <a asp-area="" asp-controller="Home" asp-action="Index">
+                    <i class="fa-solid fa-leaf"></i>
+                    <span>Veggitales</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <ul class="nav-list">
+                    <li class="nav-link">
+                        <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li class="nav-link">
+                        <a asp-area="" asp-controller="Categories" asp-action="Index">Categories</a>
+                    </li>
+                    <li class="nav-link">
+                        <a asp-area="" asp-controller="Products" asp-action="Index">Products</a>
+                    </li>
+                    <li class="nav-link">
+                        <a asp-area="" asp-controller="Home" asp-action="Index">Contact Us</a>
+                    </li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-link">
+                            <a asp-area="" asp-controller="Orders" asp-action="Index">Orders</a>
+                        </li>
+                    }
+                    <li class="nav-link-search">
+                        <form method="get" asp-controller="Shop" asp-action="Search">
+                            <input type="text" name="searchTerm" placeholder="Search products...">
+                            <button type="submit">Search</button>
+                        </form>
+                    </li>
+
+                </ul>
+            </div>
+            <partial name="_LoginPartial" />
+        </nav>
+        <div class="mobile-nav">
+            <div class="logo">
+                <a asp-area="" asp-controller="Home" asp-action="Index">
+                    <i class="fa-solid fa-leaf"></i>
+                    <span>Veggitales</span>
+                </a>
+                <button class="close-nav"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="nav-links">
+                <ul class="nav-list">
+                    <li class="nav-link">
+                        <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li class="nav-link">
+                        <a asp-area="" asp-controller="Home" asp-action="Index">Categories</a>
+                    </li>
+                    <li class="nav-link">
+                        <a asp-area="" asp-controller="Home" asp-action="Index">Products</a>
+                    </li>
+                    <li class="nav-link">
+                        <a asp-area="" asp-controller="Home" asp-action="Index">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </header>
+    @* <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <div class="container-fluid">
+    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+    <img src="~/img/logo.png" alt="VeggiTales" />
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+    <ul class="navbar-nav flex-grow-1">
+    <li class="nav-item">
+    <a class="nav-link text-dark" asp-area="" asp-controller="Shop" asp-action="Index">Shop</a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link text-dark" asp-area="" asp-controller="Shop" asp-action="Cart">
+    Cart
+    @if (Context.Session.GetInt32("ItemCount") > 0)
+    {
+    <span class="badge badge-primary">
+    @Context.Session.GetInt32("ItemCount")
+    </span>
+    }
+    </a>
+    </li>
+    @if (User.Identity.IsAuthenticated)
+    {
+    <li class="nav-item">
+    <a class="nav-link text-dark" asp-area="" asp-controller="Orders" asp-action="Index">Orders</a>
+    </li>
+    }
+    @if (User.IsInRole("Administrator"))
+    {
+    <li class="nav-item">
+    <a class="nav-link text-dark" asp-area="" asp-controller="Categories" asp-action="Index">Categories</a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">Products</a>
+    </li>
+    }
+    </ul>
+    <partial name="_LoginPartial" />
+    </div>
+    </div>
+    </nav>
+    </header> *@
+    <main role="main">
+        @RenderBody()
+    </main>
+
+    <footer>
+        <div class="footer-row">
+            <div class="footer-box">
+                <img src="~/img/logo.jpg" alt="Veggitales Logo">
+                <p>Lorem ipsum dolor sit amet consectetur <br>adipisicing elit. Quod, rem?</p>
+            </div>
+            <div class="footer-box">
+                <h3>SOCIAL LINKS</h3>
+                <div class="social-links">
+                    <a href="#">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fa-brands fa-twitter"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fa-brands fa-google-plus-g"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-box">
+                <h3>INFO</h3>
+                <div class="info">
+                    <span><b>Address:</b></span>
+                    <p>
+                        69 Halsey St, New York,<br>
+                        Ny 10002.
+                    </p>
+                    <span><b>Phone:</b></span>
+                    <p>1-800-1234-567</p>
+                    <span><b>Email:</b></span>
+                    <p>example@info.com</p>
+                </div>
+            </div>
+            <div class="footer-box">
+                <h3>GALLERY</h3>
+                <div class="gallery">
+                    <div class="gallery-img">
+                        <img src="~/img/footer-gallery-original-1.jpg" alt="">
+                    </div>
+                    <div class="gallery-img">
+                        <img src="~/img/footer-gallery-original-2.jpg" alt="">
+                    </div>
+                    <div class="gallery-img">
+                        <img src="~/img/footer-gallery-original-1.jpg" alt="">
+                    </div>
+                    <div class="gallery-img">
+                        <img src="~/img/footer-gallery-original-2.jpg" alt="">
+                    </div>
+                </div>
+                <div class="overlay" id="overlay">
+                    <div class="overlay-content">
+                        <img src="" alt="" id="fullscreen-img">
+                        <button id="close-btn"><i class="fa-solid fa-xmark"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="credits">
+            <p>Veggitales © 2024.</p> <a href="#">Privacy Policy</a>
+        </div>
+    </footer>
+    @* <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script> *@
+    <!-- DayJS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.10/dayjs.min.js" integrity="sha512-FwNWaxyfy2XlEINoSnZh1JQ5TRRtGow0D6XcmAWmYCRgvqOUTnzCxPc9uF35u5ZEpirk1uhlPVA19tflhvnW1g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.10/plugin/duration.min.js" integrity="sha512-t0b2NyBypSms8nA81pldWo0mXbfMotsdYgvs4awmbi/GU/25YBNLnXj+I9DAMV7WGZ8+z8wtRolX7zSF2LN8UQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Swiper -->
+    <script src="~/js/cdn.jsdelivr.net_npm_swiper@10.1.0_swiper-bundle.min.js" asp-append-version="true"></script>
+    <script src="~/js/swiper-bundle.min.js" asp-append-version="true"></script>
+    <!-- Main JS -->
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

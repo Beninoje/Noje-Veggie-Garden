@@ -1,0 +1,44 @@
+﻿@model VeggiTales.Models.ShopViewModel
+
+@if (Model != null && Model.Products != null && Model.Products.Any())
+{
+    <h2>Filtered Products</h2>
+    @foreach (var product in Model.Products)
+    {
+        <div class="card-body text-center h-100">
+            <h5>@product.Name</h5>
+            @if (product.Photo != null)
+            {
+                <img src="~/img/product-uploads/@product.Photo" alt="@product.Name Photo" class="thumb" />
+            }
+            else
+            {
+                <img src="~/img/product-uploads/placeholder.jpg" alt="@product.Name Photo" class="thumb" />
+            }
+            <p>
+                @String.Format("{0:c}", product.Price)
+            </p>
+            <form method="post" action="AddToCart">
+                @Html.AntiForgeryToken()
+                <fieldset>
+                    <label for="Quantity">Quantity: </label>
+                    <input name="Quantity" required type="number" min="1" max="999" />
+                </fieldset>
+                <input name="ProductId" type="hidden" value="@product.ProductId" />
+                <button class="btn btn-primary mt-3">
+                    Add to Cart
+                </button>
+            </form>
+            <form method="post" action="AddToFavourites">
+                @Html.AntiForgeryToken()
+                <input name="ProductId" type="hidden" value="@product.ProductId" />
+                <button class="btn btn-primary mt-3">
+                    Add to Favourites
+                </button>
+            </form>
+        </div>
+    }
+}
+else{
+    <h1>No products found matching your search term.</h1>
+}

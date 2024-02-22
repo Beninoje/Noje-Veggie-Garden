@@ -1,0 +1,41 @@
+﻿using Microsoft.EntityFrameworkCore.Migrations;
+
+namespace VeggiTales.Data.Migrations
+{
+    public partial class addedFavouritesSection : Migration
+    {
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.CreateTable(
+                name: "FavouriteItems",
+                columns: table => new
+                {
+                    FavouriteItemId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CustomerId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ProductId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FavouriteItems", x => x.FavouriteItemId);
+                    table.ForeignKey(
+                        name: "FK_FavouriteItems_Products_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Products",
+                        principalColumn: "ProductId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_FavouriteItems_ProductId",
+                table: "FavouriteItems",
+                column: "ProductId");
+        }
+
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropTable(
+                name: "FavouriteItems");
+        }
+    }
+}

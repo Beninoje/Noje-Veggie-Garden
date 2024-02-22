@@ -1,0 +1,641 @@
+﻿@model IEnumerable<VeggiTales.Models.Product>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+        <section class="main-text">
+            <div class="main-text-container">
+                <h1 class="main-title">Veggitales</h1>
+                <p>We enable people to enjoy locally grown eco-friendly and healthy
+                    foods that are reasonably priced and conveniently delivered.</p>
+            </div>
+            <div class="main-text-buttons">
+                <div class="shop-now">
+                    <a href="#">SHOP NOW</a>
+                </div>
+                <div class="learn-more">
+                    <a href="#">LEARN MORE</a>
+                </div>
+            </div>
+        </section>
+        <section class="main mySwiper">
+            <div class="main-section swiper-wrapper">
+                <div class="main-slide swiper-slide">
+                    <img src="~/img/home-img1.jpg" alt="">
+                </div>
+                <div class="main-slide swiper-slide">
+                    <img src="~/img/home-img2.jpg" alt="">
+                </div>
+                <div class="main-slide swiper-slide">
+                    <img src="~/img/home-img3.jpg" alt="">
+                </div>
+            </div>
+        </section>
+        <section class="categories section">
+            <div class="categories-title-container">
+                <h2>Popular Categories</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="categories-main">
+                <div class="categories-container">
+                    <div class="categorie-box">
+                        <img src="~/img/category-img1.png" alt="category img">
+                        <div class="category-box-overlay">
+                            <div class="category-box-overlay-content">
+                                <h3>Red & Orange</h3>
+                                <p>@(Model != null ? Model.Count(p => p.Category.Name == "Red & Orange") : 0) Products</p>
+                                <div class="shop-button">
+                                    <a href="#">SHOP NOW</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="categorie-box">
+                        <img src="~/img/category-img2.png" alt="category img">
+                        <div class="category-box-overlay">
+                            <div class="category-box-overlay-content">
+                        <h3>Dark Greens</h3>
+                                <p>@(Model != null ? Model.Count(p => p.Category.Name == "Dark Greens") : 0) Products</p>
+                                <div class="shop-button">
+                                    <a href="#">SHOP NOW</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="categorie-box">
+                        <img src="~/img/category-img3.png" alt="category img">
+                        <div class="category-box-overlay">
+                            <div class="category-box-overlay-content">
+                        <h3>Beans</h3>
+                                <p>@(Model != null ? Model.Count(p => p.Category.Name == "Beans") : 0) Products</p>
+                                <div class="shop-button">
+                                    <a href="#">SHOP NOW</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="choose-us section">
+            <div class="choose-us-image">
+                <img src="~/img/women.png" alt="">
+            </div>
+            <div class="choose-us-text">
+                <div class="choose-us-text-container">
+                    <div class="choose-us-title">
+                        <h3>Why Choose Us</h3>
+                        <div class="divider"></div>
+                    </div>
+                    <div class="choose-us-box-container">
+                        <div class="choose-us-box">
+                            <div class="icon">
+                                <i class="fa-solid fa-award"></i>
+                            </div>
+                            <div class="box-text">
+                                <h3>100% Fresh Organic Foods</h3>
+                                <p>This is our motto and we are experts in delivering the best 100% organic foods on the market. We work with more than 60 farms all over the country.</p>
+                            </div>
+                        </div>
+                        <div class="choose-us-box">
+                            <div class="icon">
+                                <i class="fa-solid fa-truck"></i>
+                            </div>
+                            <div class="box-text">
+                                <h3>Fast Free Delivery</h3>
+                                <p>We have developed an effective and fast delivery network which brings the products to your home or office in 48 hours.</p>
+                            </div>
+                        </div>
+                        <div class="choose-us-box">
+                            <div class="icon">
+                                <i class="fa-solid fa-trophy"></i>
+                            </div>
+                            <div class="box-text">
+                                <h3>Rich Experience</h3>
+                                <p>We are working with organic products for 14 years and to be honest this is the best job ever – to see the people’s smiles when they taste our fresh food!</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+        <section class="offer-of-day">
+            <div class="offer-of-day-title">
+                <h3>Offer of The Day</h3>
+                <div class="divider"></div>
+                <p>We offer all sorts of vegetables, fruits, grass fed organic meat and more, fresh <br>from our farm, delivered free to your door. Everything we grow and sell is organic.</p>
+            </div>
+            <div class="offer-of-day-container">
+                <div class="offer-of-day-image">
+                    @foreach (var item in Model.Where(product => product.Category != null && product.Category.Name == "Package")){
+                        <img src="~/img/product-uploads/@item.Photo" alt="">
+                    }
+                </div>
+                <div class="offer-of-day-text">
+                    <div class="offer-of-day-text-container">
+                @foreach (var item in Model.Where(product => product.Category != null && product.Category.Name == "Package"))
+                {
+                        <h3>@item.Name</h3>
+                        <div class="price-box">
+                        <span>$@item.Price</span>
+                            <span>$90.00</span>
+                        </div>
+                        <div class="categories-info">
+                            <p><b>Category:</b> Package</p>
+                            <p><b>Tags:</b> Vegetables, Fruits, Box</p>
+                        </div>
+                }
+                        <div class="days-until-container">
+                            <div class="days-until-box">
+                                <span class="days">0</span>
+                                <span>Days</span>
+                            </div>
+                            <div class="days-until-box">
+                                <span class="hours">0</span>
+                                <span>Hours</span>
+                            </div>
+                            <div class="days-until-box">
+                                <span class="minutes">0</span>
+                                <span>Minutes</span>
+                            </div>
+                            <div class="days-until-box">
+                                <span class="seconds">0</span>
+                                <span>Seconds</span>
+                            </div>
+                        </div>
+                        <div class="add-to-cart-container">
+                            <a href="#"><i class="fa-solid fa-cart-shopping"></i> ADD TO CART</a>
+                            <a href="#"><i class="fa-regular fa-heart"></i></a>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+        </section>
+        <section class="testimonial">
+            <div class="testimonial-title">
+                <h3>What People Say</h3>
+                <div class="divider"></div>
+            </div>
+            <div class="testimonial-container mySwiper">
+                <div class="testimonial-wrapper swiper-wrapper">
+                    <div class="testimonial-slide swiper-slide">
+                        <img src="~/img/profile-1.jpg" alt="">
+                        <h3>Your level of service is absoultely outstanding!</h3>
+                        <p>I've been receiving a box from you guys for roughly one year now, and absolutely love it. I could not be happier<br> with the fresh produce I receive, and every time I've had to call Organic Farm with a question or concern, I have <br>never been treated with anything but respect and absolute kindness. </p>
+                        <div class="ratings">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <span>John Doe</span>
+                    </div>
+                    <div class="testimonial-slide swiper-slide">
+                        <img src="~/img/profile-2.jpg" alt="">
+                        <h3>Example!</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim harum quis sed veritatis ullam magnam deserunt exercitationem perferendis odit voluptatum? </p>
+                        <div class="ratings">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <span>Jim King</span>
+                    </div>
+                    <div class="testimonial-slide swiper-slide">
+                        <img src="~/img/profile-3.jpg" alt="">
+                        <h3>Your level of service is absoultely outstanding!</h3>
+                        <p>I've been receiving a box from you guys for roughly one year now, and absolutely love it. I could not be happier<br> with the fresh produce I receive, and every time I've had to call Organic Farm with a question or concern, I have <br>never been treated with anything but respect and absolute kindness. </p>
+                        <div class="ratings">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <span>Carton John</span>
+                    </div>
+                </div>
+                <div class="swiper-button-next swiper-btn"></div>
+                <div class="swiper-button-prev swiper-btn"></div>
+            </div>
+        </section>
+        <section class="featured-products">
+            <div class="featured-products-title">
+                <h3>Featured Products</h3>
+                <div class="divider"></div>
+            </div>
+           
+            <div class="featured-products-container">
+                <div class="featured-tabs">
+                    <button class="tab-btn tab-active">Dark Greens</button>
+                    <button class="tab-btn">Red & Orange</button>
+                    <button class="tab-btn">Beans</button>
+                    <button class="tab-btn">Purple</button>
+                    <!-- <div class="tab-line"></div> -->
+                </div>
+                    <div class="featured-content mySwiper">
+                        <div class="featured-content-wrapper tab-active swiper-wrapper">
+                @if (Model != null)
+                {
+                    @foreach (var item in Model.Where(product => product.Category != null && product.Category.Name == "Dark Greens"))
+                    {
+                        <div class="featured-slide swiper-slide">
+                            <img src="~/img/product-uploads/@item.Photo" alt="">
+                            <div class="ratings">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                            <span class="featured-name">@item.Name</span>
+                            <div class="price-box">
+                                <span>$95.00</span>
+                                <span>$180.00</span>
+                            </div>
+                            <div class="featured-buy">
+                                <a href="#"><i class="fa-solid fa-cart-shopping"></i> ADD TO CART</a>
+                            </div>
+                        </div>
+                    }
+                    @foreach (var item in Model.Where(product => product.Category != null && product.Category.Name == "Dark Greens"))
+                    {
+                        <div class="featured-slide swiper-slide">
+                            <img src="~/img/product-uploads/@item.Photo" alt="">
+                            <div class="ratings">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                            <span class="featured-name">@item.Name</span>
+                            <div class="price-box">
+                                <span>$95.00</span>
+                                <span>$180.00</span>
+                            </div>
+                            <div class="featured-buy">
+                                <a href="#"><i class="fa-solid fa-cart-shopping"></i> ADD TO CART</a>
+                            </div>
+                        </div>
+                    }
+                    @foreach (var item in Model.Where(product => product.Category != null && product.Category.Name == "Dark Greens"))
+                    {
+                    <div class="featured-slide swiper-slide">
+                            <img src="~/img/product-uploads/@item.Photo" alt="">
+                            <div class="ratings">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                            <span class="featured-name">@item.Name</span>
+                            <div class="price-box">
+                                <span>$95.00</span>
+                                <span>$180.00</span>
+                            </div>
+                            <div class="featured-buy">
+                                <a href="#"><i class="fa-solid fa-cart-shopping"></i> ADD TO CART</a>
+                            </div>
+                        </div>
+                    }
+                    @foreach (var item in Model.Where(product => product.Category != null && product.Category.Name == "Dark Greens"))
+                    {
+                        <div class="featured-slide swiper-slide">
+                            <img src="~/img/product-uploads/@item.Photo" alt="">
+                            <div class="ratings">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                            <span class="featured-name">@item.Name</span>
+                            <div class="price-box">
+                                <span>$95.00</span>
+                                <span>$180.00</span>
+                            </div>
+                            <div class="featured-buy">
+                                <a href="#"><i class="fa-solid fa-cart-shopping"></i> ADD TO CART</a>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <p>No Products</p>
+                }
+
+
+                        </div>
+                    </div>
+                    <div class="featured-content mySwiper">
+                        <div class="featured-content-wrapper swiper-wrapper">
+                            @if (Model != null)
+                {
+                    @foreach (var item in Model.Where(product => product.Category != null && product.Category.Name == "Red & Orange"))
+                    {
+                        <div class="featured-slide swiper-slide">
+                            <img src="~/img/product-uploads/@item.Photo" alt="">
+                            <div class="ratings">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                            <span class="featured-name">@item.Name</span>
+                            <div class="price-box">
+                                <span>$95.00</span>
+                                <span>$180.00</span>
+                            </div>
+                            <div class="featured-buy">
+                                <a href="#"><i class="fa-solid fa-cart-shopping"></i> ADD TO CART</a>
+                            </div>
+                        </div>
+                    }
+                    @foreach (var item in Model.Where(product => product.Category != null && product.Category.Name == "Red & Orange"))
+                    {
+                        <div class="featured-slide swiper-slide">
+                            <img src="~/img/product-uploads/@item.Photo" alt="">
+                            <div class="ratings">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                            <span class="featured-name">@item.Name</span>
+                            <div class="price-box">
+                                <span>$95.00</span>
+                                <span>$180.00</span>
+                            </div>
+                            <div class="featured-buy">
+                                <a href="#"><i class="fa-solid fa-cart-shopping"></i> ADD TO CART</a>
+                            </div>
+                        </div>
+                    }
+                    @foreach (var item in Model.Where(product => product.Category != null && product.Category.Name == "Red & Orange"))
+                    {
+                        <div class="featured-slide swiper-slide">
+                            <img src="~/img/product-uploads/@item.Photo" alt="">
+                            <div class="ratings">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                            <span class="featured-name">@item.Name</span>
+                            <div class="price-box">
+                                <span>$95.00</span>
+                                <span>$180.00</span>
+                            </div>
+                            <div class="featured-buy">
+                                <a href="#"><i class="fa-solid fa-cart-shopping"></i> ADD TO CART</a>
+                            </div>
+                        </div>
+                    }
+                    @foreach (var item in Model.Where(product => product.Category != null && product.Category.Name == "Red & Orange"))
+                    {
+                        <div class="featured-slide swiper-slide">
+                            <img src="~/img/product-uploads/@item.Photo" alt="">
+                            <div class="ratings">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                            <span class="featured-name">@item.Name</span>
+                            <div class="price-box">
+                                <span>$95.00</span>
+                                <span>$180.00</span>
+                            </div>
+                            <div class="featured-buy">
+                                <a href="#"><i class="fa-solid fa-cart-shopping"></i> ADD TO CART</a>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+                    </div>    
+                    
+                    <div class="featured-content mySwiper">
+                        <div class="featured-content-wrapper swiper-wrapper">
+                            @if (Model != null)
+                {
+                    @foreach (var item in Model.Where(product => product.Category != null && product.Category.Name == "Beans"))
+                    {
+                        <div class="featured-slide swiper-slide">
+                            <img src="~/img/product-uploads/@item.Photo" alt="">
+                            <div class="ratings">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                            <span class="featured-name">@item.Name</span>
+                            <div class="price-box">
+                                <span>$95.00</span>
+                                <span>$180.00</span>
+                            </div>
+                            <div class="featured-buy">
+                                <a href="#"><i class="fa-solid fa-cart-shopping"></i> ADD TO CART</a>
+                            </div>
+                        </div>
+                    }
+                    @foreach (var item in Model.Where(product => product.Category != null && product.Category.Name == "Beans"))
+                    {
+                        <div class="featured-slide swiper-slide">
+                            <img src="~/img/product-uploads/@item.Photo" alt="">
+                            <div class="ratings">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                            <span class="featured-name">@item.Name</span>
+                            <div class="price-box">
+                                <span>$95.00</span>
+                                <span>$180.00</span>
+                            </div>
+                            <div class="featured-buy">
+                                <a href="#"><i class="fa-solid fa-cart-shopping"></i> ADD TO CART</a>
+                            </div>
+                        </div>
+                    }
+                    @foreach (var item in Model.Where(product => product.Category != null && product.Category.Name == "Beans"))
+                    {
+                        <div class="featured-slide swiper-slide">
+                            <img src="~/img/product-uploads/@item.Photo" alt="">
+                            <div class="ratings">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                            <span class="featured-name">@item.Name</span>
+                            <div class="price-box">
+                                <span>$95.00</span>
+                                <span>$180.00</span>
+                            </div>
+                            <div class="featured-buy">
+                                <a href="#"><i class="fa-solid fa-cart-shopping"></i> ADD TO CART</a>
+                            </div>
+                        </div>
+                    }
+                    @foreach (var item in Model.Where(product => product.Category != null && product.Category.Name == "Beans"))
+                    {
+                        <div class="featured-slide swiper-slide">
+                            <img src="~/img/product-uploads/@item.Photo" alt="">
+                            <div class="ratings">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                            <span class="featured-name">@item.Name</span>
+                            <div class="price-box">
+                                <span>$95.00</span>
+                                <span>$180.00</span>
+                            </div>
+                            <div class="featured-buy">
+                                <a href="#"><i class="fa-solid fa-cart-shopping"></i> ADD TO CART</a>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+                    </div>
+                    <div class="featured-content mySwiper">
+                        <div class="featured-content-wrapper swiper-wrapper">
+                            @if (Model != null)
+                {
+                    @foreach (var item in Model.Where(product => product.Category != null && product.Category.Name == "Purple"))
+                    {
+                        <div class="featured-slide swiper-slide">
+                            <img src="~/img/product-uploads/@item.Photo" alt="">
+                            <div class="ratings">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                            <span class="featured-name">@item.Name</span>
+                            <div class="price-box">
+                                <span>$95.00</span>
+                                <span>$180.00</span>
+                            </div>
+                            <div class="featured-buy">
+                                <a href="#"><i class="fa-solid fa-cart-shopping"></i> ADD TO CART</a>
+                            </div>
+                        </div>
+                    }
+                    @foreach (var item in Model.Where(product => product.Category != null && product.Category.Name == "Purple"))
+                    {
+                        <div class="featured-slide swiper-slide">
+                            <img src="~/img/product-uploads/@item.Photo" alt="">
+                            <div class="ratings">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                            <span class="featured-name">@item.Name</span>
+                            <div class="price-box">
+                                <span>$95.00</span>
+                                <span>$180.00</span>
+                            </div>
+                            <div class="featured-buy">
+                                <a href="#"><i class="fa-solid fa-cart-shopping"></i> ADD TO CART</a>
+                            </div>
+                        </div>
+                    }
+                    @foreach (var item in Model.Where(product => product.Category != null && product.Category.Name == "Purple"))
+                    {
+                        <div class="featured-slide swiper-slide">
+                            <img src="~/img/product-uploads/@item.Photo" alt="">
+                            <div class="ratings">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                            <span class="featured-name">@item.Name</span>
+                            <div class="price-box">
+                                <span>$95.00</span>
+                                <span>$180.00</span>
+                            </div>
+                            <div class="featured-buy">
+                                <a href="#"><i class="fa-solid fa-cart-shopping"></i> ADD TO CART</a>
+                            </div>
+                        </div>
+                    }
+                    @foreach (var item in Model.Where(product => product.Category != null && product.Category.Name == "Purple"))
+                    {
+                        <div class="featured-slide swiper-slide">
+                            <img src="~/img/product-uploads/@item.Photo" alt="">
+                            <div class="ratings">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                            <span class="featured-name">@item.Name</span>
+                            <div class="price-box">
+                                <span>$95.00</span>
+                                <span>$180.00</span>
+                            </div>
+                            <div class="featured-buy">
+                                <a href="#"><i class="fa-solid fa-cart-shopping"></i> ADD TO CART</a>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+                    </div>
+            </div>
+        </section>
+        <section class="our-brand">
+            <div class="our-brand-container">
+                <div class="our-brand-row">
+                    <div class="our-brands">
+                        <img src="~/img/brand-1.png" alt="">
+                    </div>
+                    <div class="our-brands">
+                        <img src="~/img/brand-2.png" alt="">
+                    </div>
+                    <div class="our-brands">
+                        <img src="~/img/brand-3.png" alt="">
+                    </div>
+                    <div class="our-brands">
+                        <img src="~/img/brand-4.png" alt="">
+                    </div>
+                    <div class="our-brands">
+                        <img src="~/img/brand-5.png" alt="">
+                    </div>
+                    <div class="our-brands">
+                        <img src="~/img/brand-6.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="find-us">
+            <iframe class = "find-us-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d184551.90977292243!2d-79.54286398851997!3d43.71837095798251!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d4cb90d7c63ba5%3A0x323555502ab4c477!2sToronto%2C%20ON!5e0!3m2!1sen!2sca!4v1703781189024!5m2!1sen!2sca" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </section>
+
