@@ -27,7 +27,7 @@
 
 <ol>
     <li>Clone the repository to your local machine:</li>
-    <pre><code>git clone https://github.com/your/repository.git</code></pre>
+    <pre><code>git clone https://github.com/Beninoje/Noje-Veggie-Garden.git</code></pre>
     <li>Set up the database:
         <ul>
             <li>Create a SQL Server database.</li>
