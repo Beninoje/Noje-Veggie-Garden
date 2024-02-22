@@ -296,6 +296,21 @@ header {
         background-color: #ff7b00;
         border: 2px solid #ff7b00;
     }
+.search-form input{
+    padding:5px 10px;
+    border:0;
+    outline:0;
+
+
+}
+.search-form button {
+    background-color: #ff7b00;
+    color:#fff;
+    border:0;
+    outline:none;
+    padding:5px 10px;
+    border-radius:6px;
+}
 /*?-------Responsive--------*/
 @media(max-width:1440px) {
     .main-text {
